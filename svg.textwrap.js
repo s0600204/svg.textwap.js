@@ -33,8 +33,16 @@ SVG.extend(SVG.Text, {
 				return this;
 			}
 		},
-
-
+		
+		width: function (width) {
+			var ret = this.attr('width', width);
+			if (width != null) {
+				// we've changed the width, so redraw
+				this.text(this._unwrappedText);
+			}
+			return ret;
+		},
+		
 		text: function (text) {
 			/* act as getter */
 			if (text == null)
